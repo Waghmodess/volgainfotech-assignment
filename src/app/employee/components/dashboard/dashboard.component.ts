@@ -14,11 +14,13 @@ export class DashboardComponent {
   private employeeObject = new Employee();
   public employeeData: Employee[] = [];
   public emailFilter: string = '';
+  public employees: Employee[] = [];
 
   constructor(private formBuilder: FormBuilder, private service: EmployeeService, private router: Router) { }
 
   public ngOnInit(): void {
     this.getEmployeeData();
+    this.getStaticEmployees();
     this.employeeForm = this.formBuilder.group({
       id: [''],
       name: [''],
@@ -60,5 +62,9 @@ export class DashboardComponent {
     }, err => {
       console.log(err);
     });
+  }
+
+  public getStaticEmployees(): void {
+    this.employees = this.service.getAllStaticEmployees();
   }
 }

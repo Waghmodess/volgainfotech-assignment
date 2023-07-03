@@ -25,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let dt of employeeData | employee: emailFilter">
+            <tr *ngFor="let dt of employees | employee: emailFilter">
                 <td>{{dt.name}}</td>
                 <td>{{dt.email}}</td>
                 <td>{{dt.phone}}</td>
