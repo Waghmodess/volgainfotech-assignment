@@ -1,0 +1,26 @@
+<div class="employee-table container">
+    <div class="heading-button">
+        <h4>Employee Details</h4>
+        <button class="btn btn-primary" (click)="navigateToDashboard()">Dashboard</button>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="employee">
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.email}}</td>
+                    <td>{{employee.phone}}</td>
+                    <td>{{employee.address}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

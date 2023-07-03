@@ -1,0 +1,9 @@
+.employee-table.container {
+    width: 50%;
+}
+
+.heading-button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15%;
+}

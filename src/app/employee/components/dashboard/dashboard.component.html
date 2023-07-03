@@ -1,0 +1,77 @@
+<div>
+    <h3 class="text-center mt-3">Employee List</h3>
+</div>
+<div class="container mt-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div>
+                <input type="text" class="form-control mb-3" placeholder="Search by email" [(ngModel)]="emailFilter">
+            </div>
+            <div class="d-flex">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Create</button>
+            </div>
+        </div>
+    </nav>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Delete Employee</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dt of employeeData | employee: emailFilter">
+                <td>{{dt.name}}</td>
+                <td>{{dt.email}}</td>
+                <td>{{dt.phone}}</td>
+                <td>
+                    <button type="submit" class="btn btn-outline-danger" (click)="deleteEmployee(dt)">Delete</button>
+                </td>
+                <td><button class="btn btn-primary" (click)="getElementById(dt.id)">Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Employee</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="employeeForm">
+                        <div class="mb-3">
+                            <label class="form-label" for="name">Name:</label>
+                            <input class="form-control" required type="text" formControlName="name">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" required for="email">Email:</label>
+                            <input class="form-control" type="email" formControlName="email">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="phone">Phone:</label>
+                            <input class="form-control" required type="tel" formControlName="phone">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="address">Address:</label>
+                            <input class="form-control" required type="text" formControlName="address">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" (click)="addEmployee()"
+                        data-bs-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
